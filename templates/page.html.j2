@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: calc(100% - 20px);
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            font-family: Arial;
+            color: #222222;
+            background-color: #FDFDFD;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: auto;
+            padding-bottom: 5px;
+            margin: 15px;
+            border-bottom: 1px solid grey;
+            font-size: 18px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            border-bottom: 1px solid grey;
+            font-size: 18px;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        main {
+            margin-top: 5px;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-bottom: auto;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            padding-top: 2px;
+            margin: 15px;
+            border-top: 1px solid lightgrey;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <b style="margin-right: auto;">
+            {{ title }}
+        </b>
+        <b>
+            <a style="color: inherit; text-decoration: inherit;" href="https://{{ domain }}">{{ domain }}</a>
+        </b>
+    </nav>
+    <main id="content">{{ content }}</main>
+    <footer>
+        <span style="margin-right: auto;">generated with <3 by wikie v{{ version }}</span>
+        <span>Last updated: {{ last_updated }}</span>
+    </footer>
+</body>
+</html>
