@@ -32,6 +32,7 @@ def main(args_: list[str]) -> bool:
     args = parser.parse_args(args_)
 
     pages_dir: Path = (args.input_dir / "pages").resolve()
+    readme_file: Path = (args.input_dir / "README.md")
 
     if not pages_dir.is_dir():
         print(f"ERROR: Pages directory `{pages_dir}` does not exist.")
@@ -55,8 +56,12 @@ def main(args_: list[str]) -> bool:
 
         pages.append((title, f"pages/{page.stem}.html"))
 
-    pages.sort() 
-    rendered_index: str = index_template.render(pages=pages, domain=args.domain,
+    pages.sort()
+
+    readme_content: str = ""
+    if readme_file.is_file():
+        readme_content = markdown.markdown(readme_file.read_text())
+    rendered_index: str = index_template.render(pages=pages, domain=args.domain, readme=readme_content,
                                                 version=__version__, last_updated=time.strftime("%a, %d %b %Y %H:%M:%S %z", time.localtime()))
 
     (args.output_dir / "index.html").write_text(rendered_index)
