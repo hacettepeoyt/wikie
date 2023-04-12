@@ -5,36 +5,53 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        html {
-            height: 100%;
-        }
-
         body {
-            height: calc(100% - 20px);
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            font-family: Arial;
-            color: #222222;
-            background-color: #FDFDFD;
+            background-color: #d8d8d8;
+            text-align: center;
         }
 
         nav {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: auto;
-            padding-bottom: 5px;
-            margin: 15px;
-            border-bottom: 1px solid grey;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        h4 {
+            font-size: 20px
+        }
+
+        h5, h6 {
+            font-size: 18px
+        }
+
+        p {
             font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
         main {
-            margin-top: 5px;
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-bottom: auto;
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            text-align: left;
         }
 
         footer {
@@ -46,17 +63,24 @@
             border-top: 1px solid lightgrey;
             font-size: 14px;
         }
+
+        @media (max-width: 767px) {
+            main {
+                width: 90%;
+                margin: 30px auto;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <b style="margin-right: auto;">
-            {{ domain }}
+        <b>
+            <a style="color: inherit; text-decoration: inherit;" href="https://{{ domain }}">{{ domain }}</a>
         </b>
     </nav>
     <main>
         {{ readme }}
-        <ul>
+        <ul class="article">
         {% for page in pages %}
             <li><a href="{{ page[1] }}">{{ page[0] }}</a></li>
         {% endfor %}
